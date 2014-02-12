@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.Loader.IIS</id>
+    <version>0.1.4-pre</version>
+    <title>ASP.NET Custom Loader for IIS</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_enu.htm</licenseUrl>
+    <projectUrl>http://www.asp.net/</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Enables lightweight hosting of web applications directly on top of IIS without going through the standard System.Web pipeline. Requires IIS 8.0 and .NET 4.5.1 or higher.
+
+This is prerelease software and is provided without warranty or support.</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>Microsoft AspNet Helios</tags>
+    <references>
+      <reference file="Microsoft.AspNet.Loader.IIS.dll" />
+    </references>
+  </metadata>
+</package>

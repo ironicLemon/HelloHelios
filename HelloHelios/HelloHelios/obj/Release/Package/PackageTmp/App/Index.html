@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html ng-app="crowdSource" lang="en-gb">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/bootstrap-theme.css" rel="stylesheet" />
+
+    <title ng-bind="title"></title>
+</head>
+<body ng-controller="appCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-header">
+                    <button class="btn btn-primary navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </button>
+                    <a class="" href="/"><img src="../Content/images/IPLlogo.png" class="img-responsive" /></a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Menu 1</a></</li>
+                        <li><a href="#">Menu 2</a></</li>
+                        <li><a href="#">Menu 3</a></</li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" ng-cloak>
+                        <li><a href="#">Help</a></li>
+                        <li>
+                            <a href="/login">Sign In/Register</a>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group">
+                            <div class="right-inner-addon">
+                                <span class="icon-search glyphicon glyphicon-search"></span>
+                                <input type="search"
+                                       class="form-control"
+                                       placeholder="Search" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+    </div>
+
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/angular-route.min.js"></script>
+    <script src="../Scripts/angular-resource.min.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/appCtrl.js"></script>
+</body>
+</html>
