@@ -1,0 +1,401 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNet.Loader.IIS</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Web.Hosting.ComUtil">
+            <summary>
+            Contains helper methods for dealing with COM objects.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Web.Hosting.ComUtil.CopyComRcwToLocalAppDomain``1(``0)">
+            <summary>
+            Copies a RCW (provided by a different AppDomain) into this AppDomain so that
+            we don't have an indirect dependency on the old AD via the RCW.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Web.Hosting.ComUtil.UnwrapAsComObject(System.Runtime.Remoting.IObjectHandle)">
+            <summary>
+            Gets a COM object reference for the underlying object contained within an IObjectHandle.
+            The original object will not be marshaled into the this AppDomain; this just returns a RCW.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Loader.IIS.HeliosCustomLoader">
+            <summary>
+            This is the entry point from AspNet.Loader into Helios.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Loader.IIS.HeliosRuntimeManager">
+            <summary>
+            The core manager that ASP.NET uses to start + stop Helios applications.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Loader.IIS.HttpApplicationBase">
+            <summary>
+            The base class from which all Helios applications derive.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpApplication.ShuttingDownToken">
+            <summary>
+            Returns a CancellationToken that can be used to detect whether application shutdown has been initiated.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Loader.IIS.IHttpContext">
+            <summary>
+            Provides a managed view over the native IHttpContext, IHttpContext2, and IHttpContext3 structures.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Loader.IIS.IHttpContext.AcceptWebSocketAsync">
+            <summary>
+            Upgrades the current request to a WebSocket request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Loader.IIS.IHttpContext.AllocateRequestMemory(System.Int32)">
+            <summary>
+            Allocates unmanaged memory from this IHttpContext.
+            </summary>
+            <param name="bytesToAllocate">The number of bytes to allocate.</param>
+            <returns>A pointer to the newly-allocated memory.</returns>
+            <remarks>
+            The caller does not have to worry about managing this memory. IIS will
+            automatically reclaim it when the request ends.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpContext.Request">
+            <summary>
+            Gets the request object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpContext.Response">
+            <summary>
+            Gets the response object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpContext.ServerVariables">
+            <summary>
+            Gets any server variables for this request.
+            </summary>
+            <remarks>
+            This dictionary should be treated as immutable. Changes made to it will not
+            be reflected back to the unmanaged layer.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpContext.User">
+            <summary>
+            Gets the user (if authenticated) for the current request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpContext.ClientDisconnectedToken">
+            <summary>
+            Gets a CancellationToken that is triggered when the client disconnects.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpContext.SuppressHandlerExecute">
+            <summary>
+            Determines whether the IIS pipeline should continue processing the request with
+            the default handler associated with this extension. If this value is 'true', the
+            managed pipeline is assumed to have processed this request, and the IIS native
+            handler will not execute. If this value is 'false', the IIS native handler will
+            execute.
+            </summary>
+            <remarks>
+            The default value is 'true'.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Loader.IIS.UrlInfo">
+            <summary>
+            Represents an RFC 3987-compliant URI (IRI).
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.UrlInfo.FullUrl">
+            <summary>
+            The string corresponding to an absolute URI. Contains the scheme, authority, path, and [optional] query string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.UrlInfo.HostOffset">
+            <summary>
+            Offset into <em>FullUrl</em> at which the authority part of the URI begins.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.UrlInfo.HostLength">
+            <summary>
+            Length (in chars) of the authority part of the URI.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.UrlInfo.AbsolutePathOffset">
+            <summary>
+            Offset into <em>FullUrl</em> at which the path part of the URI begins.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.UrlInfo.AbsolutePathLength">
+            <summary>
+            Length (in chars) of the path part of the URI.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.UrlInfo.QueryStringOffset">
+            <summary>
+            Offset into <em>FullUrl</em> at which the query string part of the URI begins.
+            </summary>
+            <remarks>
+            If the URI contains a query string, this offset points to the '?' character that
+            begins the query portion of the URI. Returns -1 if the URI does not contain a
+            query string.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.UrlInfo.QueryStringLength">
+            <summary>
+            Length (in chars) of the query part of the URI. This length includes the leading
+            '?' character. Returns 0 if the URI does not contain a query string.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Loader.IIS.IHttpRequest">
+            <summary>
+            Provides a managed view over the native IHttpRequest, IHttpRequest2, and IHttpRequest3 structures.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Loader.IIS.IHttpRequest.DisableCompression">
+            <summary>
+            Disables compression for the current request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Loader.IIS.IHttpRequest.ReadEntityBodyAsync(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Asynchronously reads a request body from the client.
+            </summary>
+            <param name="buffer">The buffer that should contain the request body.</param>
+            <param name="offset">The position at which to start writing to the buffer.</param>
+            <param name="count">The maximum number of bytes which should be written to the buffer.</param>
+            <returns>A Task that represents this asynchronous operation. The value of the Task will
+            be the total number of bytes copied to the buffer.</returns>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpRequest.ClientCertificate">
+            <summary>
+            Provides access to the client certificate used to authenticate the current request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpRequest.Headers">
+            <summary>
+            Provides access to the headers that were sent by the client for this request.
+            </summary>
+            <remarks>
+            This dictionary should be treated as immutable. Changes made to it will not
+            be reflected back to the unmanaged layer.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpRequest.HttpMethod">
+            <summary>
+            Retrieves the HTTP verb used for this request, e.g., "GET", "POST".
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpRequest.HttpVersion">
+            <summary>
+            Retrieves the HTTP version used for this request, e.g., 1.1.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpRequest.LocalAddress">
+            <summary>
+            Retrieves the address of the local endpoint as an IPv4 or IPv6-formatted string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpRequest.LocalPort">
+            <summary>
+            Retrieves the port of the local endpoint.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpRequest.RemoteAddress">
+            <summary>
+            Retrieves the address of the remote endpoint as an IPv4 or IPv6-formatted string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpRequest.RemotePort">
+            <summary>
+            Retrieves the port of the remote endpoint.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpRequest.Url">
+            <summary>
+            Retrieves the URL that the client requested.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpRequest.RawUrlInfo">
+            <summary>
+            Retrieves the raw (uncanonicalized) URL that the client requested.
+            </summary>
+            <remarks>
+            This API may be dangerous because the return value is not canonicalized.
+            Consumers should take extra caution to sanitize the returned value
+            before operating on it.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpRequest.IsWebSocketRequest">
+            <summary>
+            Returns true if this is a Web Socket request, false otherwise.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Loader.IIS.IHttpResponse">
+            <summary>
+            Provides a managed view over the native IHttpResponse and IHttpResponse2 structures.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Loader.IIS.IHttpResponse.DisableBuffering">
+            <summary>
+            Disables IIS-level buffering of the current response. All writes will be flushed
+            immediately.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Loader.IIS.IHttpResponse.ResetConnection">
+            <summary>
+            Immediately aborts the current connection with the client without sending any
+            data. Any outstanding I/O operations will be canceled.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Loader.IIS.IHttpResponse.TransmitFileAsync(System.String,System.Int64,System.Nullable{System.Int64})">
+            <summary>
+            Asynchronously sends a file to the client.
+            </summary>
+            <param name="filename">The filename to send.</param>
+            <param name="offset">The offset into the file at which to begin reading.</param>
+            <param name="count">The number of bytes to send, or null if the remainder of the file after the offset should be sent.</param>
+            <returns>A Task that represents this asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Loader.IIS.IHttpResponse.WriteEntityBodyAsync(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Asynchronously sends a response body to the client.
+            </summary>
+            <param name="buffer">The buffer to write to the client.</param>
+            <param name="offset">The position in the buffer at which to begin sending.</param>
+            <param name="count">The number of bytes to send to the client.</param>
+            <returns>A Task that represents this asynchronous operation.</returns>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpResponse.Headers">
+            <summary>
+            Provides access to the headers that will be sent with this response.
+            </summary>
+            <remarks>
+            This dictionary is mutable. Changes made to it will be reflected back
+            to the unmanaged layer as long as the response body hasn't yet been
+            sent.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpResponse.StatusCode">
+            <summary>
+            Allows getting or setting the status code for this response, e.g., 200.
+            </summary>
+            <remarks>
+            Setting this value has no effect after the response entity body has been sent.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpResponse.StatusDescription">
+            <summary>
+            Allows getting or setting the status description for this response, e.g., "OK".
+            </summary>
+            <remarks>
+            Setting this value has no effect after the response entity body has been sent.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Loader.IIS.IHttpServer">
+            <summary>
+            Provides a managed view over the native IHttpServer and IHttpServer2 interfaces.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Loader.IIS.IHttpServer.RecycleProcess(System.String)">
+            <summary>
+            Recycles the current worker process.
+            </summary>
+            <param name="reason">The reason for recycling the worker process. This is used for logging and tracing.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Loader.IIS.IHttpServer.ReportUnhealthy(System.String,System.Exception)">
+            <summary>
+            Reports the worker process as unhealthy.
+            </summary>
+            <param name="reason">The cause of the unhealthy status. This is used for logging and tracing.</param>
+            <param name="error">[optional] The exception that caused the unhealthy status. This is used for logging and tracing.</param>
+            <remarks>IIS will automatically tear down the worker process.</remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.IHttpServer.IISVersion">
+            <summary>
+            Returns the version of IIS in use.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Loader.IIS.Infrastructure.InteropFunctions">
+            <summary>
+            Helper class for p/invoking back into IIS from managed code.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Loader.IIS.Infrastructure.InteropFunctions.InteropFunctionPointers">
+            <summary>
+            Used for passing function pointers between the native and managed layers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Loader.IIS.Res">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.Res.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.Res.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.Res.GenericIO_AccessDenied">
+            <summary>
+              Looks up a localized string similar to Access to the file &apos;{0}&apos; was denied..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.Res.GenericIO_FileNotFound">
+            <summary>
+              Looks up a localized string similar to The file &apos;{0}&apos; could not be found..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.Res.GenericIO_NotFile">
+            <summary>
+              Looks up a localized string similar to The path &apos;{0}&apos; does not represent a file on disk..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.Res.GenericIO_UnknownError">
+            <summary>
+              Looks up a localized string similar to An unknown error occured while opening the file &apos;{0}&apos;..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.Res.HeliosRuntimeManager_ApplicationNotFound">
+            <summary>
+              Looks up a localized string similar to No assembly in the bin folder was marked with the [HttpApplication] attribute..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.Res.HeliosRuntimeManager_UnknownPlatform">
+            <summary>
+              Looks up a localized string similar to The current platform is unsupported..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Loader.IIS.Res.PipelineExecutor_NoTaskReturned">
+            <summary>
+              Looks up a localized string similar to The ProcessRequestAsync method on type &apos;{0}&apos; returned a null Task..
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Loader.IIS.SafeLibraryHandle.GetProcAddress``1(System.String)">
+            <summary>
+            Gets a delegate pointing to a given export from this library.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Loader.IIS.Util.NativeStructuresUtil.GetHeaders(Microsoft.AspNet.Loader.IIS.NativeStructures.HTTP_REQUEST_HEADERS*)">
+            <summary>
+            Returns a list of headers from the native request structure.
+            </summary>
+            <remarks>Conversion from bytes to string is performed using UTF8.
+            This was determined by looking at what IE10+ and WebKit send on the wire.</remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Loader.IIS.__Canon">
+            <summary>
+            This class has no purpose other than to reference AspNet.Loader.dll.
+            Visual Studio will not bin-deploy AspNet.Loader.dll unless somebody indirectly references it.
+            </summary>
+        </member>
+    </members>
+</doc>

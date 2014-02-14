@@ -84,3 +84,6 @@ D:\Work\GitHub\HelloHelios\HelloHelios\HelloHelios\bin\System.Web.Http.Owin.xml
 D:\Work\GitHub\HelloHelios\HelloHelios\HelloHelios\obj\Debug\HelloHelios.csprojResolveAssemblyReference.cache
 D:\Work\GitHub\HelloHelios\HelloHelios\HelloHelios\obj\Debug\HelloHelios.dll
 D:\Work\GitHub\HelloHelios\HelloHelios\HelloHelios\obj\Debug\HelloHelios.pdb
+D:\Work\GitHub\HelloHelios\HelloHelios\HelloHelios\bin\Microsoft.AspNet.Loader.IIS.xml
+D:\Work\GitHub\HelloHelios\HelloHelios\HelloHelios\bin\Microsoft.Owin.Host.IIS.xml
+D:\Work\GitHub\HelloHelios\HelloHelios\HelloHelios\bin\Microsoft.Owin.Host.IIS.Security.xml

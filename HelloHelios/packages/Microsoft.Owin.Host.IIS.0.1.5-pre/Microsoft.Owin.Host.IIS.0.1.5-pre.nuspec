@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>Microsoft.Owin.Host.IIS</id>
-    <version>0.1.4-pre</version>
+    <version>0.1.5-pre</version>
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>
     <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_enu.htm</licenseUrl>
@@ -15,7 +15,7 @@ This is prerelease software and is provided without warranty or support.</descri
     <tags>Microsoft AspNet Helios OWIN</tags>
     <dependencies>
       <dependency id="Microsoft.Owin.Hosting" version="2.1.0" />
-      <dependency id="Microsoft.AspNet.Loader.IIS" version="0.1.4-pre" />
+      <dependency id="Microsoft.AspNet.Loader.IIS" version="0.1.5-pre" />
     </dependencies>
     <references>
       <reference file="Microsoft.Owin.Host.IIS.dll" />

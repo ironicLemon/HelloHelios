@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Owin.Host.IIS.Security</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Owin.Host.IIS.Security.DataProtection.DataProtectionProvider">
+            <summary>
+            Provides methods for creating IDataProtectionProvider instances.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Host.IIS.Security.DataProtection.DataProtectionProvider.CreateNew">
+            <summary>
+            Creates a new IDataProtectorFactory with a randomly-generated master key.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Host.IIS.Security.DataProtection.DataProtectionProvider.CreateFromKey(System.Byte[])">
+            <summary>
+            Creates a new IDataProtectorFactory with the provided master key.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Owin.Host.IIS.Security.DataProtection.IDataProtectionProvider">
+            <summary>
+            A factory that can provide IDataProtector instances.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Host.IIS.Security.DataProtection.IDataProtectionProvider.CreateProtector(System.String)">
+            <summary>
+            Given a purpose, returns a new IDataProtector that has unique cryptographic keys tied to this purpose.
+            </summary>
+            <param name="purpose">The consumer of the IDataProtector.</param>
+            <returns>An IDataProtector.</returns>
+        </member>
+        <member name="T:Microsoft.Owin.Host.IIS.Security.DataProtection.IDataProtector">
+            <summary>
+            Represents an object that can perform cryptographic operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Host.IIS.Security.DataProtection.IDataProtector.CreateSubProtector(System.String)">
+            <summary>
+            Given a subpurpose, returns a new IDataProtector that has unique cryptographic keys tied <em>both</em> the purpose
+            that was used to create this IDataProtector instance <em>and</em> the purpose that is provided as a parameter
+            to this method.
+            </summary>
+            <param name="purpose">The sub-consumer of the IDataProtector.</param>
+            <returns>An IDataProtector.</returns>
+        </member>
+        <member name="M:Microsoft.Owin.Host.IIS.Security.DataProtection.IDataProtector.Protect(System.Byte[])">
+            <summary>
+            Cryptographically protects some input data.
+            </summary>
+            <param name="unprotectedData">The data to be protected.</param>
+            <returns>An array containing cryptographically protected data.</returns>
+            <remarks>To retrieve the original data, call Unprotect on the protected data.</remarks>
+        </member>
+        <member name="M:Microsoft.Owin.Host.IIS.Security.DataProtection.IDataProtector.Unprotect(System.Byte[])">
+            <summary>
+            Retrieves the original data that was protected by a call to Protect.
+            </summary>
+            <param name="protectedData">The protected data to be decrypted.</param>
+            <returns>The original data.</returns>
+            <remarks>Throws CryptographicException if the <em>protectedData</em> parameter has been tampered with.</remarks>
+        </member>
+        <member name="M:Microsoft.Owin.Host.IIS.Security.Util.BufferUtil.ToManagedByteArray(System.Byte*,System.Int32)">
+            <summary>
+            Creates a new managed byte[] from unmanaged memory.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Host.IIS.Security.Util.BufferUtil.ToManagedByteArray(System.Byte*,System.UInt32)">
+            <summary>
+            Creates a new managed byte[] from unmanaged memory.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Host.IIS.Security.Util.BufferUtil.ZeroMemory(System.Byte*,System.Int32)">
+            <summary>
+            Clears a memory buffer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Host.IIS.Security.Util.BufferUtil.ZeroMemory(System.Byte*,System.UInt32)">
+            <summary>
+            Clears a memory buffer.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Owin.Host.IIS.Cryptography.Resources.Res">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Host.IIS.Cryptography.Resources.Res.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Host.IIS.Cryptography.Resources.Res.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Host.IIS.Cryptography.Resources.Res.DataProtectorFactory_MasterKeyTooShort">
+            <summary>
+              Looks up a localized string similar to The master key is too short. It must be at least {0} bytes in length..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Host.IIS.Cryptography.Resources.Res.DataProtectorImpl_BadEncryptedData">
+            <summary>
+              Looks up a localized string similar to The data to decrypt is invalid..
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Host.IIS.Security.Util.ILHelpers.cpblk(System.IntPtr,System.IntPtr,System.UInt32)">
+            <summary>
+            Implements the 'cpblk' opcode without going through the perf-destorying overhead of reflection emit.
+            </summary>
+        </member>
+    </members>
+</doc>
